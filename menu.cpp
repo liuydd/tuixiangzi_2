@@ -2,10 +2,11 @@
 #include<conio.h>
 #include "menu.h"
 #include "user.h"
+#include "operate.h"
 using namespace std;
-bool ft = true;
 int vis = 0;
-void Menu::ShowChosemap() {
+int step = 0;
+void Menu::ShowChosemap(int map[8][8], int lastmap[][8][8]) {
 	system("cls");
 	for (int i = 0; i < 20; i++) {
 		for (int j = 0; j < 30; j++) {
@@ -15,12 +16,11 @@ void Menu::ShowChosemap() {
 	char ans;
 	ans = _getch();
 	switch (ans) {
-	case 'q':case 'Q':
-		ShowMenu1();
+	case 'q':case 'Q'://回到当前游戏界面
 		break;
-	case 'a':case 'A'://这里实现不了orz
-		//to do!!!（怎样重新开始这一局）
-		ft = false;
+	case 'a':case 'A'://重开搞定了！
+		Operate o;
+			o.remake(map, lastmap);
 		break;
 	}
 }

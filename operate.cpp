@@ -39,8 +39,8 @@ void Operate::Print(int map[8][8]) {
     cout <<"The number of step is "<< step << endl;
 }
 
-void Operate::Move(int map[8][8],char ch) {
-    //ch = _getch();
+void Operate::Move(int map[8][8],int lastmap[][8][8],char ch) {
+    reversepre(map, lastmap);
     switch (ch)
     {
     case 'w':
@@ -60,8 +60,8 @@ void Operate::Move(int map[8][8],char ch) {
                 step++;
             }
         }
-
         break;
+
     case 's':
         if (map[r + 1][c] == 0 || map[r + 1][c] == 3)//人的后面是空地或目的地 
         {
@@ -80,6 +80,7 @@ void Operate::Move(int map[8][8],char ch) {
             }
         }
         break;
+
     case 'a':
         if (map[r][c - 1] == 0 || map[r][c - 1] == 3)//人的左面是空地或目的地 
         {
@@ -117,11 +118,20 @@ void Operate::Move(int map[8][8],char ch) {
             }
         }
         break;
+
     case 'r':
-               //这里有点问题，退出应该是指退出当前界面，而非退出游戏
-        Menu menu;
-        menu.ShowChosemap();
+    { Menu menu;
+    menu.ShowChosemap(map,lastmap); }
         break;
+
+    case 'f'://悔步.终于实现了！！！
+        step--; 
+        if (step < 0) {
+            step++;
+            break;
+        }
+        goback(map, lastmap);
+        break; 
     }
 }
 
@@ -155,3 +165,26 @@ void Operate::Position(int map[8][8]) {
     cout << "人的下标:" << r << " " << c;
     cout << endl;
 }
+void Operate::reversepre(int map[8][8], int lastmap[][8][8]) {//用lastmap储存map的值
+    for (int i = 0; i < 8; i++) {
+        for (int j = 0; j < 8; j++) {
+            lastmap[step][i][j]= map[i][j];
+        }
+    }
+}
+void Operate::goback(int map[8][8],int lastmap[][8][8]) {//用lastmap给map赋值，使其回到上一步地图
+    for (int i = 0; i < 8; i++) {
+        for (int j = 0; j < 8; j++) {
+            map[i][j]=lastmap[step][i][j];
+        }
+    }
+}
+void Operate::remake(int map[8][8], int lastmap[][8][8]) {
+    for (int i = 0; i < 8; i++) {
+        for (int j = 0; j < 8; j++) {
+            map[i][j] = lastmap[0][i][j];
+        }
+    }
+    step = 0;
+}
+

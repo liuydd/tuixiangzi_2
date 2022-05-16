@@ -1,11 +1,10 @@
 #pragma once
 #ifndef _MENU_H
 #define _MENU_H
-extern bool ft;
 extern int vis;
 class Menu {
 public:
-	void ShowChosemap();
+	void ShowChosemap(int map[8][8], int lastmap[][8][8]);
 	void ShowMenu1();
 	void ShowInstruction();
 	void ShowRegisterlogin();
