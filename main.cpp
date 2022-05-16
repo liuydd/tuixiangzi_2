@@ -17,6 +17,7 @@ int main() {
 	switch (v) {
 	case 1://闯关模式
 		while (num < 5) {
+			h:
 			Operate operate;
 			Map map_;
 			bool is_map = 1;
@@ -44,6 +45,18 @@ int main() {
 				operate.Print(map);
 				char key;
 				key = _getch();
+				if (key == 'n') {
+					if (num < 4) {
+						num++;
+						step = 0;
+						goto h;
+					}
+					else if (num == 4) {
+						num = 0;
+						step = 0;
+						goto h;
+					}
+				}
 				operate.Move(map, lastmap, key);
 				system("cls");
 			}
@@ -55,6 +68,7 @@ int main() {
 		break;
 	case 2://无限模式
 		while (num < 20) {
+			h2:
 			Operate operate;
 			Map _map;
 			bool is_map = 1;
@@ -68,6 +82,18 @@ int main() {
 				operate.Print(map);
 				char key;
 				key = _getch();
+				if (key == 'n') {
+					if (num < 19) {
+						num++;
+						step = 0;
+						goto h2;
+					}
+					else if (num == 19) {
+						num = 0;
+						step = 0;
+						goto h2;
+					}
+				}
 				operate.Move(map, lastmap, key);
 				system("cls");
 			}
