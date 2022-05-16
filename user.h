@@ -15,13 +15,5 @@ private:
 	string name;
 	int count = 0;
 };
-/*
-class LogIn :public User {
-	LogIn();
-	void login();
-private:
-	int time = 0;
-};
-*/
 #endif
 

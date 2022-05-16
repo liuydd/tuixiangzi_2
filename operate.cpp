@@ -3,10 +3,10 @@
 #include "menu.h"
 #include "operate.h"
 using namespace std;
-void Operate::Print(int map[8][8]) {
-    for (int i = 0; i < 8; i++)
+void Operate::Print(int map[10][10]) {
+    for (int i = 0; i < 10; i++)
     {
-        for (int j = 0; j < 8; j++)
+        for (int j = 0; j < 10; j++)
         {
             switch (map[i][j])
             {
@@ -39,7 +39,7 @@ void Operate::Print(int map[8][8]) {
     cout <<"The number of step is "<< step << endl;
 }
 
-void Operate::Move(int map[8][8],int lastmap[][8][8],char ch) {
+void Operate::Move(int map[10][10],int lastmap[2999][10][10],char ch) {
     reversepre(map, lastmap);
     switch (ch)
     {
@@ -135,10 +135,10 @@ void Operate::Move(int map[8][8],int lastmap[][8][8],char ch) {
     }
 }
 
-bool Operate::Judge(int map[8][8]) {
+bool Operate::Judge(int map[10][10]) {
     int t = 0;
-    for (int i = 0; i < 8; i++) {
-        for (int j = 0; j < 8; j++) {
+    for (int i = 0; i < 10; i++) {
+        for (int j = 0; j < 10; j++) {
             if (map[i][j] == 4)
                 t = 1;
         }
@@ -147,11 +147,11 @@ bool Operate::Judge(int map[8][8]) {
         return 1;
     return 0;
 }
-void Operate::Position(int map[8][8]) {
+void Operate::Position(int map[10][10]) {
     int flag = 0;
-    for (r = 0; r < 8; r++)
+    for (r = 0; r < 10; r++)
     {
-        for (c = 0; c < 8; c++)
+        for (c = 0; c < 10; c++)
         {
             if (map[r][c] == 5 || map[r][c] == 8)
             {
@@ -165,23 +165,23 @@ void Operate::Position(int map[8][8]) {
     cout << "人的下标:" << r << " " << c;
     cout << endl;
 }
-void Operate::reversepre(int map[8][8], int lastmap[][8][8]) {//用lastmap储存map的值
-    for (int i = 0; i < 8; i++) {
-        for (int j = 0; j < 8; j++) {
+void Operate::reversepre(int map[10][10], int lastmap[2999][10][10]) {//用lastmap储存map的值
+    for (int i = 0; i < 10; i++) {
+        for (int j = 0; j < 10; j++) {
             lastmap[step][i][j]= map[i][j];
         }
     }
 }
-void Operate::goback(int map[8][8],int lastmap[][8][8]) {//用lastmap给map赋值，使其回到上一步地图
-    for (int i = 0; i < 8; i++) {
-        for (int j = 0; j < 8; j++) {
+void Operate::goback(int map[10][10],int lastmap[2999][10][10]) {//用lastmap给map赋值，使其回到上一步地图
+    for (int i = 0; i < 10; i++) {
+        for (int j = 0; j < 10; j++) {
             map[i][j]=lastmap[step][i][j];
         }
     }
 }
-void Operate::remake(int map[8][8], int lastmap[][8][8]) {
-    for (int i = 0; i < 8; i++) {
-        for (int j = 0; j < 8; j++) {
+void Operate::remake(int map[10][10], int lastmap[2999][10][10]) {
+    for (int i = 0; i < 10; i++) {
+        for (int j = 0; j < 10; j++) {
             map[i][j] = lastmap[0][i][j];
         }
     }

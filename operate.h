@@ -6,17 +6,17 @@ using namespace std;
 extern int step;
 class Operate {
 public:
-	bool Judge(int map[8][8]);
-	void Move(int map[8][8], int lastmap[][8][8], char ch);
-	void Print(int map[8][8]);
-	void goback(int map[8][8],int lastmap[][8][8]);
-	void reversepre(int map[8][8], int lastmap[][8][8]);
-	void remake(int map[8][8],int lastmap[][8][8]);
+	bool Judge(int map[10][10]);
+	void Move(int map[10][10], int lastmap[2999][10][10], char ch);
+	void Print(int map[10][10]);
+	void goback(int map[10][10],int lastmap[2999][10][10]);
+	void reversepre(int map[10][10], int lastmap[2999][10][10]);
+	void remake(int map[10][10],int lastmap[2999][10][10]);
 private:
 	//int step=0;
 	int next;//¹Ø¿¨Êý
 	int r, c;//×ø±ê
 	char key;
-	void Position(int map[8][8]);
+	void Position(int map[10][10]);
 };
 #endif

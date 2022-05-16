@@ -7,7 +7,6 @@ class Map {
 public:
 	Map();
 	~Map();
-	bool ReadMap(int map[8][8], const char* filename);
-	void WriteMap();
+	bool ReadMap(int map[10][10], const char* filename);
 };
 #endif

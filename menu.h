@@ -2,9 +2,10 @@
 #ifndef _MENU_H
 #define _MENU_H
 extern int vis;
+extern int v;
 class Menu {
 public:
-	void ShowChosemap(int map[8][8], int lastmap[][8][8]);
+	void ShowChosemap(int map[10][10], int lastmap[2999][10][10]);
 	void ShowMenu1();
 	void ShowInstruction();
 	void ShowRegisterlogin();
@@ -46,9 +47,9 @@ private:
 					"    --------------------------------------\n",
 					"    ||                                  ||\n",
 					"    || 本游戏采用wsad分别向上下左右移动 ||\n",
-					"    || 按键r可选择重新开始或退出当前游戏||\n",
-					"    ||                                  ||\n",
-					"    ||       返回上级菜单（Q）          ||\n",
+					"    ||       按键r可选择重新开始        ||\n",
+					"    ||         按键f可实现悔步          ||\n",
+					"    ||         返回上级菜单（Q）        ||\n",
 					"    ||                                  ||\n",
 					"    ||                                  ||\n",
 					"    --------------------------------------\n",

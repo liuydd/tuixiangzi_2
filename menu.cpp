@@ -6,7 +6,8 @@
 using namespace std;
 int vis = 0;
 int step = 0;
-void Menu::ShowChosemap(int map[8][8], int lastmap[][8][8]) {
+int v = 0;
+void Menu::ShowChosemap(int map[10][10], int lastmap[2999][10][10]) {
 	system("cls");
 	for (int i = 0; i < 20; i++) {
 		for (int j = 0; j < 30; j++) {
@@ -87,10 +88,11 @@ void Menu::ShowStyle() {
 	ans = _getch();
 	switch (ans) {
 	case 'c':case 'C':
+		v = 1;
 		ShowDegree();
 		break;
 	case 'i':case 'I':
-		//to do!!!
+		v = 2;
 		break;
 	}
 }

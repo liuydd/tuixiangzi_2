@@ -20,7 +20,6 @@ void User::ReadData() {
 	ifstream rfile;
 	rfile.open("user.txt", ios::in);
 	if (!rfile.is_open()) {
-		//cout << "failing to open the file" << endl;
 		return;
 	}
 	else {
@@ -91,41 +90,19 @@ void User::Register() {
 		}
 		password2[x1] = '\0';   //密码输入结束
 		cout << endl;
-		//user[i].password = password2;
 		if (user[i].password == password2) {   //为什么这里不能写password1==password2？
-			//user[i].password = password1;
 			count++;
 			cout << "Congratulations for your successful register!" << endl;
 			User::SaveData();
-			break;   //这里需要改一下 我跳出循环了就没有下面choice什么事了
+			break;   
 		}
 		else {
 			cout << "Your password is different from the first one.";
 			goto here;
 		}
-		/*
-		char choice;
-		cout << "Do you want to register another account?1 for yes and 2 for no." << endl;
-		while (true) {
-			cin >> choice;
-			if (choice == 1 || choice == 2)
-				break;
-			else cout << "Wrong choice,please input again." << endl;
-		}
-		if (choice == 2)
-			break;
-			*/          //暂时先这样？
 	}
 }
 
-/*
-void LogIn::login() {
-	User::ReadData();
-	string name_;
-	char pw_;
-	char password_[30];
-}
-*/
 void User::LogIn() {        //有什么办法能将注册和登陆统一起来？感觉写两遍代码好麻烦。登陆多一个判断环节，注册多一个循环
 	User::ReadData();
 	string name_;
