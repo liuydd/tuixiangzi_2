@@ -44,14 +44,13 @@ void User::Register() {
 	for (int i = count; i < M; i++) {
 	here://有没有什么方法不用goto但是如果不符合注册规则可以重新这一次？
 		cout << "Please input your username." << endl;
-		cin >> name2;   //这里还要改一下，应该设计成不包括空格
+		cin >> name2;  
 		for (int i = 0; i < count; i++) {
 			if (name2 == user[i].name) {
 				cout << "The username has been here,please try another." << endl;
 				goto here;
 			}
 		}
-
 		user[i].name = name2;
 		cout << "Please input your password." << endl;
 
@@ -72,7 +71,7 @@ void User::Register() {
 		password1[x] = '\0';   //密码输入结束
 		cout << endl;
 		user[i].password = password1;
-		//检查两次密码是否一致
+	here2://检查两次密码是否一致
 		cout << "Please input your password again." << endl;
 		while ((pw2 = _getch()) != '\r' && x1 <= 30) {  //不是回车和超出范围
 			if (pw2 == '\b') {  //退格
@@ -97,8 +96,9 @@ void User::Register() {
 			break;   
 		}
 		else {
-			cout << "Your password is different from the first one.";
-			goto here;
+			cout << "Your password is different from the first one." << endl;
+			x1 = 0;//这里一定要将x1初始化！
+			goto here2;
 		}
 	}
 }
@@ -110,8 +110,8 @@ void User::LogIn() {        //有什么办法能将注册和登陆统一起来？感觉写两遍代码好
 	char password_[30];
 	int x = 0;
 	int time = 0;
+	here:
 	cout << "Please input your username." << endl;
-here:
 	cin >> name_;
 	cout << "Please input your password." << endl;
 	while ((pw_ = _getch()) != '\r' && x <= 30) {  //不是回车和超出范围
@@ -139,6 +139,7 @@ here:
 	if (time == 0) {
 		cout << "The name does not exist or the password is wrong." << endl;
 		cout << "Please try again." << endl;
+		x = 0;
 		goto here;
 	}
 }

@@ -1,6 +1,5 @@
 ﻿#include<bits/stdc++.h>
 #include<conio.h>
-#include "game.h"
 #include "operate.h"
 #include "map.h"
 #include "user.h"
@@ -45,7 +44,7 @@ int main() {
 				operate.Print(map);
 				char key;
 				key = _getch();
-				if (key == 'n') {
+				if (key == 't') {
 					if (num < 4) {
 						num++;
 						step = 0;
@@ -65,6 +64,7 @@ int main() {
 			cout << "Congratulations for your successfully passed the " << num << " map！" << endl;
 			system("pause");
 		}
+		menu.ShowMenu1();
 		break;
 	case 2://无限模式
 		while (num < 20) {
@@ -82,7 +82,7 @@ int main() {
 				operate.Print(map);
 				char key;
 				key = _getch();
-				if (key == 'n') {
+				if (key == 't') {
 					if (num < 19) {
 						num++;
 						step = 0;
@@ -102,6 +102,7 @@ int main() {
 			cout << "Congratulations for your successfully passed the " << num << " map！" << endl;
 			system("pause");
 		}
+		menu.ShowMenu1();
 		break;
 	}
 	return 0;
